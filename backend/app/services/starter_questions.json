@@ -1,0 +1,240 @@
+{
+  "title": "Original starter assessment \u2014 not the official Microsoft assessment",
+  "categories": [
+    {
+      "id": "pillar-1",
+      "title": "Reliability",
+      "description": "Starter discussion prompts. Record supporting evidence in your assessment notes.",
+      "questions": [
+        {
+          "id": "question-1-1",
+          "type": "multiSelect",
+          "title": "Which service must recover first after an outage, and why?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-1-1-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-1-1-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-1-1-3",
+              "text": "Not applicable"
+            }
+          ]
+        },
+        {
+          "id": "question-1-2",
+          "type": "multiSelect",
+          "title": "When did you last restore a backup and verify the restored application?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-1-2-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-1-2-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-1-2-3",
+              "text": "Not applicable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar-2",
+      "title": "Security",
+      "description": "Starter discussion prompts. Record supporting evidence in your assessment notes.",
+      "questions": [
+        {
+          "id": "question-2-1",
+          "type": "multiSelect",
+          "title": "Who can grant production access, and how is that decision reviewed?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-2-1-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-2-1-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-2-1-3",
+              "text": "Not applicable"
+            }
+          ]
+        },
+        {
+          "id": "question-2-2",
+          "type": "multiSelect",
+          "title": "What evidence shows that privileged accounts use strong authentication?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-2-2-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-2-2-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-2-2-3",
+              "text": "Not applicable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar-3",
+      "title": "Cost Optimization",
+      "description": "Starter discussion prompts. Record supporting evidence in your assessment notes.",
+      "questions": [
+        {
+          "id": "question-3-1",
+          "type": "multiSelect",
+          "title": "Who reviews cloud spend and investigates changes each month?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-3-1-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-3-1-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-3-1-3",
+              "text": "Not applicable"
+            }
+          ]
+        },
+        {
+          "id": "question-3-2",
+          "type": "multiSelect",
+          "title": "How do you identify resources that no longer serve a business need?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-3-2-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-3-2-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-3-2-3",
+              "text": "Not applicable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar-4",
+      "title": "Operational Excellence",
+      "description": "Starter discussion prompts. Record supporting evidence in your assessment notes.",
+      "questions": [
+        {
+          "id": "question-4-1",
+          "type": "multiSelect",
+          "title": "How do you detect a failed deployment and return to a working version?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-4-1-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-4-1-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-4-1-3",
+              "text": "Not applicable"
+            }
+          ]
+        },
+        {
+          "id": "question-4-2",
+          "type": "multiSelect",
+          "title": "Where are operational responsibilities and escalation contacts recorded?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-4-2-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-4-2-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-4-2-3",
+              "text": "Not applicable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar-5",
+      "title": "Performance Efficiency",
+      "description": "Starter discussion prompts. Record supporting evidence in your assessment notes.",
+      "questions": [
+        {
+          "id": "question-5-1",
+          "type": "multiSelect",
+          "title": "What response time and throughput does the business require?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-5-1-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-5-1-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-5-1-3",
+              "text": "Not applicable"
+            }
+          ]
+        },
+        {
+          "id": "question-5-2",
+          "type": "multiSelect",
+          "title": "How do you test the system against expected peak demand?",
+          "isRequired": false,
+          "choices": [
+            {
+              "id": "choice-5-2-1",
+              "text": "Evidence available"
+            },
+            {
+              "id": "choice-5-2-2",
+              "text": "Needs follow-up"
+            },
+            {
+              "id": "choice-5-2-3",
+              "text": "Not applicable"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

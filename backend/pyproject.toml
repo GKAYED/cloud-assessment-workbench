@@ -1,0 +1,14 @@
+[project]
+name = "cloud-assessment-workbench-backend"
+version = "0.1.0"
+description = "Cloud Assessment Workbench — Azure Assessment Portal Backend"
+requires-python = ">=3.11"
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
