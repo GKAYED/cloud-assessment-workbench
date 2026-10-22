@@ -9,6 +9,11 @@ export function getLocalSession(): string | null {
 
 export function clearLocalSession(): void {
   sessionStorage.removeItem(KEY);
+  for (const storage of [localStorage, sessionStorage]) {
+    const keys = Object.keys(storage).filter((key) =>
+      key.startsWith('azaudit_module_cache') || key.startsWith('azaudit_warm_snapshot_cache'));
+    keys.forEach((key) => storage.removeItem(key));
+  }
   window.dispatchEvent(new Event(SESSION_CHANGED));
 }
 
@@ -20,6 +25,7 @@ export async function unlockLocalSession(key: string): Promise<void> {
   });
   if (!response.ok) throw new Error('Unable to unlock. Check the key and that the backend is running.');
   const data = await response.json() as { token: string };
+  clearLocalSession();
   sessionStorage.setItem(KEY, data.token);
   window.dispatchEvent(new Event(SESSION_CHANGED));
 }
@@ -29,6 +35,7 @@ export async function sessionFetch(input: string, init: RequestInit = {}): Promi
   const headers = new Headers(init.headers);
   if (token) headers.set('X-Workbench-Session', token);
   const response = await fetch(input, { ...init, headers });
+  if (token !== getLocalSession()) throw new Error('Local session changed; response discarded');
   if (response.status === 401) {
     // Cloud authentication can also return 401; only lock for a local session error.
     const error = await response.clone().json().catch(() => ({})) as { detail?: string };

@@ -50,6 +50,8 @@ Create a separate profile for each engagement, sign in, and run Data Pull. Succe
 
 ## Development
 
+Assessment report PDF export opens the browser print dialog. Choose **Save as PDF** and review the preview before saving. Print preparation and cleanup are tested; native print-dialog saving and final PDF pagination were not verified for this release.
+
 ```powershell
 cd backend
 ../.venv/Scripts/python.exe -m pip install -r requirements-dev.txt -c constraints.txt

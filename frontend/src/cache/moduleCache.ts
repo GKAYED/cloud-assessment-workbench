@@ -3,6 +3,7 @@
  */
 
 import { normalizeModuleCacheData } from './normalizeModuleData';
+import { getLocalSession } from '../api/localSession';
 
 const MODULE_CACHE_PREFIX = 'azaudit_module_cache_v5';
 
@@ -16,7 +17,8 @@ function getStorageKey(contextKey: string, cacheKey: string): string {
 
 export function readModuleCache<T>(contextKey: string, cacheKey: string): T | null {
   try {
-    const raw = localStorage.getItem(getStorageKey(contextKey, cacheKey));
+    if (!getLocalSession()) return null;
+    const raw = sessionStorage.getItem(getStorageKey(contextKey, cacheKey));
     if (!raw) return null;
     const parsed = JSON.parse(raw) as { data?: unknown };
     const normalized = normalizeModuleCacheData(cacheKey, parsed.data);
@@ -29,8 +31,9 @@ export function readModuleCache<T>(contextKey: string, cacheKey: string): T | nu
 
 export function writeModuleCache<T>(contextKey: string, cacheKey: string, data: T): void {
   try {
+    if (!getLocalSession()) return;
     const normalized = normalizeModuleCacheData(cacheKey, data);
-    localStorage.setItem(
+    sessionStorage.setItem(
       getStorageKey(contextKey, cacheKey),
       JSON.stringify({
         data: normalized,
@@ -46,13 +49,13 @@ export function clearContextModuleCache(contextKey: string): void {
   try {
     const contextPrefix = `${MODULE_CACHE_PREFIX}:${contextKey}:`;
     const keys: string[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
+    for (let i = 0; i < sessionStorage.length; i++) {
+      const key = sessionStorage.key(i);
       if (key && key.startsWith(contextPrefix)) {
         keys.push(key);
       }
     }
-    keys.forEach((key) => localStorage.removeItem(key));
+    keys.forEach((key) => sessionStorage.removeItem(key));
   } catch {
     // Ignore storage access failures.
   }
