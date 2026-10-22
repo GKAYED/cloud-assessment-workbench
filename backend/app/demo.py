@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from sqlalchemy import select
 
 from app.db import AssessmentSnapshotDB, CustomerProfileDB, async_session, init_db
+from app.models.inventory import InventorySummary
 
 
 async def main():
@@ -21,7 +22,7 @@ async def main():
             if existing.scalar_one_or_none():
                 print(f'Demo {number} already exists; leaving it unchanged.')
                 continue
-            profile = CustomerProfileDB(customer_name=name, status='Cached', report_version='v2')
+            profile = CustomerProfileDB(customer_name=name, status='Cached', report_version='v2', last_assessed_at=datetime.now(timezone.utc))
             db.add(profile)
             await db.flush()
             sub = f'00000000-0000-4000-8000-{number:012d}'
@@ -30,10 +31,11 @@ async def main():
                         'resource_group': 'rg-demo', 'subscription_id': sub, 'subscription_name': 'Synthetic subscription',
                         'tags': {'purpose':'synthetic-demo'}, 'is_tagged': True}
             modules = {
-                'inventory.summary': {'total_resources':1, 'total_resource_groups':1, 'total_subscriptions':1,
-                    'by_type': {'microsoft.web/sites':1}, 'by_location': {'australiaeast':1}, 'tagged_resources':1, 'untagged_resources':0},
+                'inventory.summary': InventorySummary(total_resources=1, total_resource_groups=1, total_subscriptions=1,
+                    resources_by_type={'microsoft.web/sites':1}, resources_by_location={'australiaeast':1},
+                    resources_by_resource_group={'rg-demo':1}).model_dump(),
                 'inventory.resources': [resource],
-                'inventory.subscriptions': [{'subscription_id':sub, 'display_name':'Synthetic subscription', 'state':'Enabled'}],
+                'inventory.subscriptions': [{'subscription_id':sub, 'display_name':'Synthetic subscription', 'state':'Enabled', 'tenant_id':'00000000-0000-4000-8000-000000000000'}],
                 'inventory.resource_groups': [{'name':'rg-demo', 'subscription_id':sub, 'location':'australiaeast', 'resource_count':1, 'tags':{}}],
                 'inventory.databases': [],
                 'cost.summary': {'total': 100 * number, 'total_cost_1m':100 * number, 'total_cost_3m':300 * number,

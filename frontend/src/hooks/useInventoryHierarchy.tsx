@@ -356,12 +356,12 @@ export function useInventoryHierarchy({
 
   const typeOptions = useMemo(() => {
     if (!summaryData) return [];
-    return Object.keys(summaryData.resources_by_type).sort((a, b) => a.localeCompare(b));
+    return Object.keys(summaryData.resources_by_type ?? {}).sort((a, b) => a.localeCompare(b));
   }, [summaryData]);
 
   const locationOptions = useMemo(() => {
     if (!summaryData) return [];
-    return Object.keys(summaryData.resources_by_location).sort((a, b) => a.localeCompare(b));
+    return Object.keys(summaryData.resources_by_location ?? {}).sort((a, b) => a.localeCompare(b));
   }, [summaryData]);
 
   const filteredResources = useMemo(() => {
@@ -382,7 +382,7 @@ export function useInventoryHierarchy({
 
   const topTypes = useMemo(() => {
     if (!summaryData) return [];
-    return Object.entries(summaryData.resources_by_type)
+    return Object.entries(summaryData.resources_by_type ?? {})
       .map(([name, value]) => ({ name: resourceTypeLeaf(name), value }))
       .sort((a, b) => b.value - a.value)
       .slice(0, 10);
@@ -390,7 +390,7 @@ export function useInventoryHierarchy({
 
   const topLocations = useMemo(() => {
     if (!summaryData) return [];
-    return Object.entries(summaryData.resources_by_location)
+    return Object.entries(summaryData.resources_by_location ?? {})
       .map(([name, value]) => ({ name: name || 'Unknown', value }))
       .sort((a, b) => b.value - a.value)
       .slice(0, 8);
