@@ -82,5 +82,5 @@ typing_extensions==4.16.0
 urllib3==2.8.0
 uvicorn==0.54.0
 watchfiles==1.3.0
-wcwidth==0.9.3
+wcwidth==0.9.4
 websockets==17.3
