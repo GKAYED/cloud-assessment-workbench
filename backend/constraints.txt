@@ -58,7 +58,7 @@ platformdirs==4.13.5
 pluggy==1.7.0
 prettytable==3.18.0
 py-serializable==2.1.0
-pycparser==3.11
+pycparser==3.12
 pydantic==2.14.1
 pydantic-settings==2.16.1
 pydantic_core==2.50.1
